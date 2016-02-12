@@ -1,5 +1,7 @@
 # Mailing
 
+Mailing é um **antigo** projeto pessoal, feito por mim para o estudos de **Stored Procedures** do MySQL 5.x e **Zend Framework 1.x**, portanto, utilize-o por sua conta e risco.
+
 ### Pré Requisitos
 - PHP 5.3+
 - AWS SES
