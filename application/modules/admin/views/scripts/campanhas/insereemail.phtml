@@ -1,0 +1,35 @@
+<div id="admin-campanhas-emails">
+    <h2>E-mails</h2>
+
+    <form action="?insere" method="post">
+        <table class="table table-bordered table-striped emails-list">
+            <thead>
+                <tr>
+                    <th>Nome</th>
+                    <th>E-mail</th>
+                    <th>Grupo</th>
+                </tr>
+            </thead>
+            <tbody>
+                <?php foreach ($this->emails as $linha): ?>
+                <tr id="admin-emails-lista-email-<?= $linha['id_email'] ?>">
+                    <td>
+                        <label class="checkbox">
+                            <input type="checkbox" name="emails[]" value="<?= $linha['id_email'] ?>"> <?= $linha['str_nome'] ?>
+                        </label>
+                    </td>
+                    <td><?= $linha['str_email'] ?></td>
+                    <td><?= $linha['str_grupo'] ?></td>
+                </tr>
+                <?php endforeach; ?>
+            </tbody>
+        </table>
+        <input type="hidden" name="campanha" id="campanha" value="<?= $this->campanha ?>">
+        
+        <a id="btnSelecionar" class="btn"><i class="icon-list-alt"></i> (des)selecionar todos</a>
+        <a id="btnAdicionarSelecionados" class="btn btn-success"><i class="icon-upload icon-white"></i> Adicionar selecionados</a>
+    </form>
+
+    <?php echo $this->paginationControl($this->emails, 'Sliding', 'partials/paginator.phtml'); ?>
+</div>
+<script src="<?= $this->baseUrl('/js/lib/admin_campanhas.js') ?>"></script>

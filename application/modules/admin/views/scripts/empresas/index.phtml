@@ -1,0 +1,40 @@
+<div id="admin-empresas-index">
+    <h2>Empresas</h2>
+
+    <table class="table table-bordered table-striped empresas-list">
+        <thead>
+            <tr>
+                <th>Empresa</th>
+                <th>E-mail</th>
+                <th>Telefone</th>
+                <th style="width: 80px">Opções</th>
+            </tr>
+        </thead>
+        <tbody>
+            <?php foreach ($this->empresas as $linha): ?>
+            <tr id="admin-empresas-lista-empresa-<?= $linha->id_empresa ?>">
+                <td><?= $linha->str_nome ?></td>
+                <td><?= $linha->str_email ?></td>
+                <td><?= $this->telefone($linha->int_telefone) ?></td>
+                <td>
+                    <div class="btn-group">
+                        <a href="#" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">Opções <span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="/admin/campanhas/index/emprsa/<?= $linha->id_empresa ?>">Campanhas</a></li>
+                            <li><a href="/admin/templates/index/empresa/<?= $linha->id_empresa ?>">Templates</a></li>
+                            <li><a href="/admin/usuarios/index/empresa/<?= $linha->id_empresa ?>">Usuários</a></li>
+                            <li><a href="/admin/empresas/relatorios/empresa/<?= $linha->id_empresa ?>">Relatórios</a></li>
+                            <li class="divider"></li>
+                            <li><a href="/admin/empresas/logar/empresa/<?= $linha->id_empresa  ?>">Logar como <?= $linha->str_nome ?></a></li>
+                            <li><a href="/admin/empresas/editar/empresa/<?= $linha->id_empresa  ?>">Editar</a></li>
+                            <li><a href="/admin/empresas/apagar/empresa/<?= $linha->id_empresa?>">Remover</a></li>
+                        </ul>
+                    </div>
+                </td>
+            </tr>
+            <?php endforeach; ?>
+        </tbody>
+    </table>
+
+    <?php echo $this->paginationControl($this->empresas, 'Sliding', 'partials/paginator.phtml'); ?>
+</div>

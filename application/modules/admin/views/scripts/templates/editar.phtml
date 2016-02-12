@@ -1,0 +1,18 @@
+<div id="admin-templates-editar" class="">
+    <h2 class="span12 offset0">Template</h2>
+
+    <?= $this->form; ?>
+
+    <div id="help" class="well span12">
+         <h3>Tags disponíveis para o template</h3>
+
+         <em>{$nome}</em> - Insere o nome do usuário (ou seu e-mail, caso não possua um nome cadastrado.<br/>
+         <em>{$email}</em> - O e-mail do usuário<br/>
+         <em>{$hoje}</em> - A data atual, no formato dia/mês/ano.<br/>
+         <em>{$titulo}</em> - O título para a campanha (é o título do e-mail, e também aceita variáveis.<br/>
+         <em>{$conteudo}</em> - O conteúdo passado como parâmetro para a sp de preparação dos e-mails<br/>
+     </div>
+</div>
+<script type="text/javascript" src="/js/ckeditor/ckeditor.js"></script>
+<script type="text/javascript" src="/js/ckeditor/adapters/jquery.js"></script>
+<script src="<?= $this->baseUrl('/js/lib/admin_templates.js'); ?>"></script>

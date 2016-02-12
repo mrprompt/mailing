@@ -1,0 +1,77 @@
+/**
+ * Estilizações específicas ou não atendidas pelo Bootstrap do Twitter
+ *
+ * @author Thiago Paes <mrprompt@gmail.com>
+ */
+body {
+    padding-top: 0;
+}
+#navbar {
+    padding-top: 0;
+}
+#navbar .page-header {
+    margin: 0;
+}
+
+/* classes */
+.boxArrendondado {
+    -webkit-border-radius: 6px;
+    -moz-border-radius: 6px;
+    border-radius: 6px;
+}
+
+/* padronizando os forms do zend */
+.zend_form {}
+.zend_form dd {
+    margin-left: 0;
+}
+.zend_form .input-xxlarge {
+    width: 99%;
+    display: block;
+}
+
+/* removo a borda do header das tabelas */
+table.table-bordered thead {
+    background-color: #2C2C2C;
+    color: #FFF;
+}
+table.table-bordered thead tr th {
+    border-style: none !important;
+}
+
+/* login de usuário */
+.form-login {
+    width: 225px;
+}
+
+/* mensagem de erro da validação */
+.errorField {
+    color: #710909;
+}
+
+#frmEmpresa, #frmEmail {
+    width: 550px;
+}
+#arquivo-label {
+    margin-left: 20px;
+}
+#arquivo-label + dd {
+    margin-left: 20px;
+}
+
+.modal-template {
+    width: 960px;
+    margin: -325px 0 0 -480px;
+    height: 100%;
+}
+.modal-template .modal-body {
+    display: block;
+    max-height: 550px;
+}
+.modal-template .modal-body textarea {
+    height: 100%;
+}
+
+#admin-emails-index select#grupo {
+    margin-top: 8px;
+}

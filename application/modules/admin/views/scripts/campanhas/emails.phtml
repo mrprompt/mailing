@@ -1,0 +1,23 @@
+<div id="admin-campanhas-emails">
+    <h2>E-mails</h2>
+
+    <table class="table table-bordered table-striped emails-list">
+        <thead>
+            <tr>
+                <th>E-mail</th>
+                <th>Status</th>
+            </tr>
+        </thead>
+        <tbody>
+            <?php foreach ($this->emails as $linha): ?>
+            <tr id="admin-emails-lista-email-<?= $linha['id_fila'] ?>">
+                <td><?= $linha['str_email'] ?></td>
+                <td><?= $linha['str_status'] ?></td>
+            </tr>
+            <?php endforeach; ?>
+        </tbody>
+    </table>
+
+    <?php echo $this->paginationControl($this->emails, 'Sliding', 'partials/paginator.phtml'); ?>
+</div>
+<script src="<?= $this->baseUrl('/js/lib/admin_campanhas.js') ?>"></script>

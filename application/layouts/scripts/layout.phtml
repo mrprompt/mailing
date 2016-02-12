@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="pt">
+    <head>
+        <meta charset=utf-8>
+        <title>Mailing<?= isset($this->titulo) ? ' - ' . $this->titulo: null ?></title>
+        <meta name="keywords" content="">
+        <meta name="description" content="">
+        <meta name="robots" content="ALL">
+        <meta name="distribution" content="Global">
+        <meta name="rating" content="General">
+        <meta name="author" content="">
+        <meta name="language" content="pt-br">
+        <meta name="doc-class" content="Completed">
+        <meta name="doc-rights" content="Protected">
+
+        <link href="/img/favicon.ico" rel="icon" type="image/x-icon">
+    </head>
+    <body>
+        <?= $this->layout()->content; ?>
+    </body>
+</html>

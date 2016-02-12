@@ -1,0 +1,29 @@
+<div id="admin-grupos-index">
+    <h2>Grupos de E-mail</h2>
+
+    <table class="table table-bordered table-striped grupos-list">
+        <thead>
+            <tr>
+                <th>Nome</th>
+                <th>E-mails</th>
+                <th>Data de Criação</th>
+                <th style="width: 220px">Opções</th>
+            </tr>
+        </thead>
+        <tbody>
+            <?php foreach ($this->grupos as $linha): ?>
+            <tr id="admin-grupos-lista-grupo-<?= $linha->id_email_grupo ?>">
+                <td><?= $linha->str_nome ?></td>
+                <td><?= number_format($linha->int_emails, 0, '.', '.') ?></td>
+                <td><?= $this->data($linha->dat_log) ?></td>
+                <td>
+                    <a class="btn btn-mini btn-info" href="/admin/emails/index/grupo/<?= $linha->id_email_grupo ?>"><i class="icon-envelope icon-white"></i> Listar E-mails</a>
+                    <a class="btn btn-mini btn-info" href="/admin/grupos/apagar/grupo/<?= $linha->id_email_grupo ?>"><i class="icon-envelope icon-white"></i> Remover Grupo</a>
+                </td>
+            </tr>
+            <?php endforeach; ?>
+        </tbody>
+    </table>
+
+    <?php echo $this->paginationControl($this->grupos, 'Sliding', 'partials/paginator.phtml'); ?>
+</div>

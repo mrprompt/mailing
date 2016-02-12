@@ -1,0 +1,24 @@
+<?php if ($this->pageCount): ?>
+    <div class="pagination row span7 offset4">
+        <ul>
+            <!-- Previous page link -->
+            <?php if (isset($this->previous)): ?>
+            <li><a href="<?php echo $this->url(array('pagina' => $this->previous)); ?>">«</a></li>
+            <?php else: ?>
+            <li class="disabled"><a href="#">«</a></li>
+            <?php endif; ?>
+
+            <!-- Numbered page links -->
+            <?php foreach ($this->pagesInRange as $page): ?>
+            <li class="<?= ($page == $this->current ? 'active' : null) ?>"><a href="<?php echo $this->url(array('pagina' => $page)); ?>"><?php echo $page; ?></a></li>
+            <?php endforeach; ?>
+
+            <!-- Next page link -->
+            <?php if (isset($this->next)): ?>
+            <li><a href="<?php echo $this->url(array('pagina' => $this->next)); ?>">»</a></li>
+            <?php else: ?>
+            <li class="disabled"><a href="#">»</a></li>
+            <?php endif; ?>
+        </ul>
+    </div>
+<?php endif; ?>

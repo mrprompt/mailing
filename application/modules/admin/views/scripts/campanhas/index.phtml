@@ -1,0 +1,51 @@
+<div id="admin-campanhas-index">
+    <h2>Campanhas</h2>
+
+    <table class="table table-bordered table-striped empresas-list">
+        <thead>
+            <tr>
+                <th>Título</th>
+                <th>E-mails</th>
+                <th>Data de Criação</th>
+                <th>Início do Envio</th>
+                <th>Data final para Envio</th>
+                <th style="width: 80px">Opções</th>
+            </tr>
+        </thead>
+        <tbody>
+            <?php foreach ($this->campanhas as $linha): ?>
+            <tr id="admin-campanhas-lista-campanha-<?= $linha->id_campanha ?>">
+                <td><?= $linha->str_titulo ?></td>
+                <td><?= number_format($linha->int_emails, 0, '.', '.') ?></td>
+                <td><?= $this->data($linha->dat_criacao) ?></td>
+                <td><?= $this->data($linha->dat_inicio) ?></td>
+                <td><?= $this->data($linha->dat_fim) ?></td>
+                <td>
+                    <div class="btn-group">
+                        <a class="btn btn-primary dropdown-toggle" data-toggle="dropdown">Opções <span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="/admin/campanhas/emails/campanha/<?= $linha->id_campanha ?>"><i class="icon-envelope"></i> Listar E-mails</a></li>
+                            <li><a href="/admin/campanhas/insereemail/campanha/<?= $linha->id_campanha ?>"><i class="icon-envelope"></i> Adicionar E-mail</a></li>
+                            <li><a href="/admin/campanhas/inseregrupo/campanha/<?= $linha->id_campanha ?>"><i class="icon-envelope"></i> Adicionar Grupo</a></li>
+                            <li><a href="/admin/campanhas/relatorios/campanha/<?= $linha->id_campanha ?>" data-toggle="modal" data-target="#campanha_<?= $linha->id_campanha ?>"><i class="icon-file"></i> Relatórios</a></li>
+                            <li class="divider"></li>
+                            <li><a href="/admin/campanhas/editar/campanha/<?= $linha->id_campanha  ?>"><i class="icon-pencil"></i> Editar</a></li>
+                            <li><a href="/admin/campanhas/apagar/campanha/<?= $linha->id_campanha ?>"><i class="icon-trash"></i> Remover</a></li>
+                        </ul>
+                    </div>
+                    <div class="modal hide modal-status" id="campanha_<?= $linha->id_campanha ?>">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal">×</button>
+                            <h3>Status</h3>
+                        </div>
+                        <div class="modal-body"></div>
+                    </div>
+                </td>
+            </tr>
+            <?php endforeach; ?>
+        </tbody>
+    </table>
+
+    <?php echo $this->paginationControl($this->campanhas, 'Sliding', 'partials/paginator.phtml'); ?>
+</div>
+<script src="<?= $this->baseUrl('/js/lib/admin_campanhas.js') ?>"></script>

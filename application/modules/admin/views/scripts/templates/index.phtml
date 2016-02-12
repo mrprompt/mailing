@@ -1,0 +1,35 @@
+<div id="admin-templates-index">
+    <h2>Templates</h2>
+
+    <ul class="well span12 templates thumbnails">
+    <?php foreach ($this->templates as $template): ?>
+        <li>
+            <div class="thumbnail">
+                <img src="<?= $this->baseUrl('/img/template_icon.jpg') ?>" alt="" data-toggle="modal" data-target="#template_<?= $template['id_template'] ?>">
+
+                <h3><?= $template['str_nome']; ?></h3>
+
+                <div class="btn-group">
+                    <a href="<?= $this->baseUrl('/admin/templates/editar/id/' . $template['id_template']) ?>" class="btn btn-primary btn-mini"><i class="icon-pencil icon-white"></i> Editar</a>
+                    <a href="<?= $this->baseUrl('/admin/templates/apagar/id/' . $template['id_template']) ?>" class="btn btn-danger btn-mini"><i class="icon-trash icon-white"></i> Apagar</a>
+                </div>
+
+                <div class="modal hide modal-template" id="template_<?= $template['id_template'] ?>">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal">×</button>
+                        <h3><?= $template['str_nome']; ?></h3>
+                    </div>
+                    <div class="modal-body">
+                        <textarea readonly><?= $template['str_corpo'] ?></textarea>
+                    </div>
+                </div>
+            </div>
+        </li>
+    <?php endforeach; ?>
+    </ul>
+
+    <?php echo $this->paginationControl($this->templates, 'Sliding', 'partials/paginator.phtml'); ?>
+</div>
+<script src="/js/ckeditor/ckeditor.js"></script>
+<script src="/js/ckeditor/adapters/jquery.js"></script>
+<script src="/js/lib/admin_templates.js"></script>

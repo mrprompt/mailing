@@ -1,0 +1,40 @@
+<div id="admin-usuarios-index">
+    <h2>Usuários</h2>
+
+    <form method="post">
+        <table class="table table-bordered table-striped usuarios-list">
+            <thead>
+                <tr>
+                    <th>Nome</th>
+                    <th>E-mail</th>
+                    <th style="width: 65px;">Opções</th>
+                </tr>
+            </thead>
+            <tbody>
+                <?php foreach ($this->usuarios as $linha): ?>
+                <tr id="admin-usuarios-lista-usuario-<?= $linha->id_usuario ?>">
+                    <td>
+                        <label class="checkbox">
+                            <input type="checkbox" name="usuarios[]" value="<?= $linha->id_usuario ?>"> <?= $linha->str_nome ?>
+                        </label>
+                    </td>
+                    <td>
+                        <?= $linha->str_email ?>
+                    </td>
+                    <td>
+                        <div class="btn-group">
+                            <a class="btn btn-mini btn-info" href="/admin/usuarios/editar/usuario/<?= $linha->id_usuario ?>" title="Editar contato"><i class="icon-pencil icon-white"></i> Editar</a>
+                        </div>
+                    </td>
+                </tr>
+                <?php endforeach; ?>
+            </tbody>
+        </table>
+    </form>
+
+    <a class="btn btn-success"><i class="icon-list-alt"></i> (des)selecionar todos</a>
+    <a class="btn btn-danger"><i class="icon-trash icon-white"></i> Apagar selecionados</a>
+    
+    <?php echo $this->paginationControl($this->usuarios, 'Sliding', 'partials/paginator.phtml'); ?>
+</div>
+<script src="<?= $this->baseUrl('/js/lib/admin_usuarios.js') ?>"></script>

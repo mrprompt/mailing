@@ -1,0 +1,51 @@
+<?php $grupo = Zend_Controller_Front::getInstance()->getRequest()->getParam('grupo'); ?>
+<div id="admin-emails-index">
+    <h2><?= (strlen($grupo) !== 0 ? 'Exibindo e-mails do grupo ' . $this->emails->getItem(0)->str_grupo : 'E-mails') ?></h2>
+
+    <form method="post">
+        <table class="table table-bordered table-striped emails-list">
+            <thead>
+                <tr>
+                    <th>Nome</th>
+                    <th>E-mail</th>
+                    <th>Grupo</th>
+                    <th style="width: 65px;">Opções</th>
+                </tr>
+            </thead>
+            <tbody>
+                <?php foreach ($this->emails as $linha): ?>
+                <tr id="admin-emails-lista-email-<?= $linha->id_email ?>">
+                    <td>
+                        <label class="checkbox">
+                            <input type="checkbox" name="emails[]" value="<?= $linha->id_email ?>"> <?= $linha->str_nome ?>
+                        </label>
+                    </td>
+                    <td>
+                        <?= $linha->str_email ?>
+                    </td>
+                    <td>
+                        <?= $linha->str_grupo ?>
+                    </td>
+                    <td>
+                        <div class="btn-group">
+                            <a class="btn btn-mini" href="/admin/emails/editar/id/<?= $linha->id_email ?>" title="Editar contato"><i class="icon-pencil"></i> Editar</a>
+                        </div>
+                    </td>
+                </tr>
+                <?php endforeach; ?>
+            </tbody>
+        </table>
+
+        <a class="btn btn-success"><i class="icon-list-alt"></i> (des)selecionar todos</a>
+        <a class="btn btn-danger"><i class="icon-trash icon-white"></i> Apagar selecionados</a>
+        <select id="grupo" name="grupo">
+            <?php foreach($this->grupos as $linha): ?>
+            <option value="<?= $linha->id_email_grupo ?>"><?= $linha->str_nome ?></option>
+            <?php endforeach; ?>
+        </select>
+        <a class="btn btn-info"><i class="icon-folder-open icon-white"></i> Trocar Grupo</a>
+    </form>
+
+    <?php echo $this->paginationControl($this->emails, 'Sliding', 'partials/paginator.phtml'); ?>
+</div>
+<script src="<?= $this->baseUrl('/js/lib/admin_emails.js') ?>"></script>

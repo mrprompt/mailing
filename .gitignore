@@ -1,0 +1,9 @@
+.buildpath
+.settings
+.DS_Store
+.project
+nbproject
+log/*
+tmp/*
+application/bin/email.sql
+vendor
